@@ -121,7 +121,7 @@ namespace Bind
                 sw.WriteLine("using OpenTK.Core.Native;");
                 sw.WriteLine("using OpenTK.Core.Exceptions;");
                 sw.WriteLine("using OpenTK.Mathematics;");
-                sw.WriteLine("using Half = OpenTK.Mathematics.Half;")
+                sw.WriteLine("using Half = OpenTK.Mathematics.Half;");
 
                 WriteWrappers(sw, wrappers, delegates, enums, Generator.CSTypes);
 

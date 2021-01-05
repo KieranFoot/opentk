@@ -47,7 +47,7 @@ let iconUrl = "https://raw.githubusercontent.com/opentk/opentk/master/docs/files
 let description =
     "The Open Toolkit is set of fast, low-level C# bindings for OpenGL, OpenGL ES, OpenAL and OpenCL. It runs on all major platforms and powers hundreds of apps, games and scientific research.
     It provides bindings for GLFW windowing, input and a game loop, and is the perfect start for your own game engine.
-    
+
 
     OpenTK comes with simple and easy to follow tutorials for learning *modern* OpenGL. These are written by the community and represent all of the best practices to get you started.
     Learn how to use OpenTK here:
@@ -128,8 +128,8 @@ let nugetCommandRunnerPath =
 // Lazily install DotNet SDK in the correct version if not available
 let install =
     lazy
-        (if (DotNet.getVersion id).StartsWith "3" then id
-         else DotNet.install (fun options -> { options with Version = DotNet.Version "3.1.100" }))
+        (if (DotNet.getVersion id).StartsWith "5" then id
+         else DotNet.install (fun options -> { options with Version = DotNet.Version "5.0.101" }))
 
 // Define general properties across various commands (with arguments)
 let inline withWorkDir wd = DotNet.Options.lift install.Value >> DotNet.Options.withWorkingDirectory wd
@@ -162,7 +162,7 @@ Target.create "UpdateSpec" (fun _ ->
 
 Target.create "UpdateBindings" (fun _ ->
     Trace.log " --- Updating bindings --- "
-    let framework = "netcoreapp31"
+    let framework = "net5.0"
     let projFile = "src/Generator/Generator.fsproj"
 
     let args =
@@ -173,7 +173,7 @@ Target.create "UpdateBindings" (fun _ ->
 
 Target.create "UpdateBindingsRewrite" (fun _ ->
     Trace.log " --- Updating bindings (rewrite) --- "
-    let framework = "netcoreapp31"
+    let framework = "net5.0"
     let projFile = "src/Generator.Bind/Generator.Bind.csproj"
 
     let args = [  ] |> asArgs
@@ -181,7 +181,7 @@ Target.create "UpdateBindingsRewrite" (fun _ ->
 
 Target.create "RewriteBindings" (fun _ ->
     Trace.log " --- Rewriting bindings (calli) --- "
-    let framework = "netcoreapp31"
+    let framework = "net5.0"
     let projFile = "src/Generator.Rewrite/Generator.Rewrite.csproj"
     let bindingsFile = "OpenTK.Graphics.dll"
     let bindingsOutput = "src/OpenTK.Graphics/bin/Release/netstandard2.1"

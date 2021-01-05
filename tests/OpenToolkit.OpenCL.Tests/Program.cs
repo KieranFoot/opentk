@@ -37,11 +37,11 @@ namespace OpenToolkit.OpenCL.Tests
 				}
 
 				string code = @"
-                __kernel void add(__global float* A, __global float* B,__global float* result, const float mul)
-                {
-                    int i = get_global_id(0);
-                    result[i] = (A[i] + B[i])*mul;
-                }";
+				__kernel void add(__global float* A, __global float* B,__global float* result, const float mul)
+				{
+					int i = get_global_id(0);
+					result[i] = (A[i] + B[i])*mul;
+				}";
 
 				CLProgram program = CL.CreateProgramWithSource(context, code, out result);
 
